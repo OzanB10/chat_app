@@ -1,10 +1,10 @@
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const Color primaryColor = Color(0xFF4A90E2); // Mavi - ana vurgu rengi
+  static const Color primaryColor = Color.fromARGB(255, 65, 128, 205); // Mavi - ana vurgu rengi
   static const Color secondaryColor = Color(0xFFFFC107); // Amber - buton/ikon vurgusu
   static const Color accentColor = Color(0xFF7B1FA2); // Mor - ekstra vurgu
   static const Color backgroundColor = Color(0xFFF5F7FA); // Açık gri - arka plan
