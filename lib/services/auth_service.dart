@@ -1,6 +1,6 @@
 import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/services/firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -11,7 +11,7 @@ class AuthService {
   
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
-  Future<UserModel> signInWithEmailAndPassword(
+  Future<UserModel?> signInWithEmailAndPassword(
     String email, String password
     ) async {
     try {
@@ -26,7 +26,7 @@ class AuthService {
     }
   }
 
-  Future<UserModel> registerWithEmailAndPassword(
+  Future<UserModel?> registerWithEmailAndPassword(
    String email,
    String password,
    String displayName
