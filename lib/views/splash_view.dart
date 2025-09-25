@@ -1,3 +1,4 @@
+import 'package:chat_app/controllers/auth_controller.dart';
 import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -36,24 +37,24 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
 
     _animationController.forward();
 
-  //   _checkAuthAndNavigate();
+    _checkAuthAndNavigate();
   //   // will implement check if logged in auth controller in upcoming days
-  // }
-
-  //   void _checkAuthAndNavigate() async{
-  //     await Future.delayed(Duration(seconds: 2));
-
-  //     final authController = Get.put(AuthController(),permant: true);
-
-  //     await Future.delayed(Duration(milliseconds: 500));
-
-  //     if(authController.isAuthenticated){
-  //       Get.offAllNamed(Approutes.main);
-  //   } else {
-  //     Get.offAllNamed(Approutes.login);
-  //   }
-  //   }
   }
+
+    void _checkAuthAndNavigate() async{
+      await Future.delayed(Duration(seconds: 2));
+
+      final authController = Get.put(AuthController(),permanent: true);
+
+      await Future.delayed(Duration(milliseconds: 500));
+
+      if(authController.isAuthenticated){
+        Get.offAllNamed(Approutes.main);
+    } else {
+      Get.offAllNamed(Approutes.login);
+    }
+    }
+  
 
 @override
   void dispose() {

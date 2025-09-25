@@ -1,4 +1,5 @@
 import 'package:chat_app/routes/app_routes.dart';
+import 'package:chat_app/views/auth/login_view.dart';
 import 'package:chat_app/views/splash_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -8,7 +9,7 @@ class AppPages {
 
   static final routes = [
      GetPage(name: Approutes.splash, page: () => const SplashView()),
-    // GetPage(name: Approutes.login, page: () => const LoginView()),
+     GetPage(name: Approutes.login, page: () => const LoginView()),
     // GetPage(name: Approutes.register, page: () => const RegisterView()),
     // GetPage(
     // name: Approutes.home, 

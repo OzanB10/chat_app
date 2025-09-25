@@ -76,7 +76,7 @@ class AppTheme {
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
         elevation: 0,
-        padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
