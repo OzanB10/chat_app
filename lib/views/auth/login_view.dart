@@ -26,7 +26,7 @@ class _LoginViewState extends State<LoginView> {
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -36,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
             child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 50),
+                SizedBox(height: 30),
                 Center(
                   child:Container( 
                     width: 100,
@@ -50,7 +50,7 @@ class _LoginViewState extends State<LoginView> {
                     color: Colors.white,),
                   )
                 ),
-                SizedBox(height: 32),
+                SizedBox(height: 44),
                 Text("Welcome Back!",
                 style: Theme.of(context).textTheme.headlineLarge,
                 ),
