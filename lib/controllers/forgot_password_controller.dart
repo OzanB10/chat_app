@@ -4,19 +4,19 @@ import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {
   final AuthService _authService = AuthService();
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final RxBool _isloading = false.obs;
   final RxString _error = ''.obs;
   final RxBool _emailSent = false.obs;
 
-  bool get isloading => _isloading.value;
+  bool get isLoading => _isloading.value;
   String get error => _error.value;
   bool get emailSent => _emailSent.value;
 
   @override
   void onClose() {
-    _emailController.dispose();
+    emailController.dispose();
     super.onClose();
   }
 
@@ -27,10 +27,10 @@ class ForgotPasswordController extends GetxController {
       _isloading.value = true;
       _error.value = '';
 
-      await _authService.sendPasswordResetEmail(_emailController.text.trim());
+      await _authService.sendPasswordResetEmail(emailController.text.trim());
 
       _emailSent.value = true;
-      Get.snackbar('Success', 'Password reset email sent to ${_emailController.text}',
+      Get.snackbar('Success', 'Password reset email sent to ${emailController.text}',
       backgroundColor: Colors.green.withOpacity(0.1),
       colorText: Colors.green,
       duration: const Duration(seconds: 3),
