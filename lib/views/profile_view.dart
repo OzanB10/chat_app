@@ -222,6 +222,47 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
+              SizedBox(height: 30),
+              Card(
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Icon(
+                        Icons.security_outlined,
+                        color: AppTheme.primaryColor,
+                      ),
+                      title: Text("Change Password"),
+                      trailing: Icon(Icons.arrow_forward_ios_outlined),
+                      onTap: () => Get.toNamed('/change-password'),
+                    ),
+                    Divider(height: 1, color: Colors.grey),
+                    ListTile(
+                      leading: Icon(
+                        Icons.delete_forever,
+                        color: AppTheme.accentColor,
+                      ),
+                      title: Text("Delete Account"),
+                      trailing: Icon(Icons.arrow_forward_ios_outlined),
+                      onTap: controller.deleteAccount,
+                    ),
+                     Divider(height: 1, color: Colors.grey),
+                    ListTile(
+                      leading: Icon(
+                        Icons.logout,
+                        color: AppTheme.errorColor,
+                      ),
+                      title: Text("Sign Out"),
+                      trailing: Icon(Icons.arrow_forward_ios_outlined),
+                      onTap: controller.signOut,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 30),
+              Text("ChatApp v1.0.0",
+               style: Theme.of(Get.context!).textTheme.bodySmall?.copyWith(
+                color: AppTheme.textSecondaryColor,
+              ),),
             ],
           ),
         );
