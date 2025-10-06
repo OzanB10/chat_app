@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-
   Future<void> createUser(UserModel user) async {
     try {
       await _firestore.collection('users').doc(user.id).set(user.toMap());
@@ -14,9 +13,9 @@ class FirestoreService {
   }
 
   Future<UserModel?> getUser(String userId) async {
-    try{
-
-      DocumentSnapshot doc = await _firestore.collection('users').doc(userId).get();
+    try {
+      DocumentSnapshot doc =
+          await _firestore.collection('users').doc(userId).get();
       if (doc.exists) {
         return UserModel.fromMap(doc.data() as Map<String, dynamic>);
       }
@@ -24,17 +23,18 @@ class FirestoreService {
     } catch (e) {
       throw Exception('Failed to get user');
     }
-    }
+  }
 
   Future<void> updateUserOnlineStatus(String userId, bool isOnline) async {
-    try{
-    DocumentSnapshot doc = await _firestore.collection('users').doc(userId).get();
-    if (doc.exists) {
-      await _firestore.collection('users').doc(userId).update({
-        'isOnline': isOnline,
-        'lastSeen': DateTime.now().microsecondsSinceEpoch
-      });
-    }
+    try {
+      DocumentSnapshot doc =
+          await _firestore.collection('users').doc(userId).get();
+      if (doc.exists) {
+        await _firestore.collection('users').doc(userId).update({
+          'isOnline': isOnline,
+          'lastSeen': DateTime.now().microsecondsSinceEpoch,
+        });
+      }
     } catch (e) {
       throw Exception('Failed to update user online status: ${e.toString()}');
     }
@@ -43,8 +43,24 @@ class FirestoreService {
   Future<void> deleteUser(String userId) async {
     try {
       await _firestore.collection('users').doc(userId).delete();
-    }catch (e) {
+    } catch (e) {
       throw Exception('Failed to delete user: ${e.toString()}');
+    }
+  }
+
+  Stream<UserModel?> getUserStream(String userId) {
+    return _firestore
+        .collection('users')
+        .doc(userId)
+        .snapshots()
+        .map( (doc) => doc.exists ? UserModel.fromMap(doc.data()!) : null,);
+  }
+
+  Future<void> updateUser(UserModel user) async {
+    try {
+      await _firestore.collection('users').doc(user.id).update(user.toMap());
+    } catch (e) {
+      throw Exception('Failed to update user');
     }
   }
 }
