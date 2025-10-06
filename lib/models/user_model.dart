@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
   final String id;
   final String email;
@@ -34,8 +36,8 @@ class UserModel {
       displayName: map['displayName'] ?? '',
       photoURL: map['photoURL'] ?? '',
       isOnline: map['isOnline'] ?? false,
-      lastSeen: DateTime.fromMillisecondsSinceEpoch(map['lastSeen'] ?? 0),
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt'] ?? 0),
+      lastSeen: map['lastSeen'] != null ? (map['lastSeen'] as Timestamp).toDate() : DateTime.now(),
+      createdAt: map['createdAt'] != null ? (map['createdAt'] as Timestamp).toDate() : DateTime.now(),
     );
   }
 

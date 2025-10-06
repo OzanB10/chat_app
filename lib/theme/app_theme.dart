@@ -13,7 +13,7 @@ class AppTheme {
   static const Color textSecondaryColor = Color(0xFF757575); // Orta gri - ikincil yazılar
   static const Color borderColor = Color(0xFFE0E0E0); // Açık gri - divider/border
   static const Color errorColor = Color(0xFFD32F2F); // Kırmızı - hata
-  static const Color successColor = Color(0xFF388E3C); // Yeşil - başarı
+  static const Color successColor = Color.fromARGB(255, 16, 163, 60); // Yeşil - başarı
 
 
   static ThemeData lightTheme = ThemeData(

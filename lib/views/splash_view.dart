@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
 
 @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     _animationController=AnimationController(
       vsync: this, 
@@ -49,7 +49,8 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
       await Future.delayed(Duration(milliseconds: 500));
 
       if(authController.isAuthenticated){
-        Get.offAllNamed(Approutes.main);
+       // Get.offAllNamed(Approutes.main);
+        Get.offAllNamed(Approutes.profile);
     } else {
       Get.offAllNamed(Approutes.login);
     }
