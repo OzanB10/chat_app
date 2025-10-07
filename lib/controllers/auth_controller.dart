@@ -21,34 +21,34 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     _user.bindStream(_authService.authStateChanges);
-    ever(_user, _handleAuthStateChange);
+    // ever(_user, _handleAuthStateChange);
   }
 
-  void _handleAuthStateChange(User? user) {
-    if (user != null) {
-      if (Get.currentRoute != Approutes.login) {
-        Get.offAllNamed(Approutes.login);
-      }
-    } else {
-      if (Get.currentRoute != Approutes.profile) {
-        Get.offAllNamed(Approutes.profile);
-      }
-    }
-    if (!_isinitialized.value) {
-      _isinitialized.value = true;
-    }
-  }
+  // void _handleAuthStateChange(User? user) {
+  //   if (user != null) {
+  //     if (Get.currentRoute != Approutes.login) {
+  //       Get.offAllNamed(Approutes.login);
+  //     }
+  //   } else {
+  //     if (Get.currentRoute != Approutes.profile) {
+  //       Get.offAllNamed(Approutes.profile);
+  //     }
+  //   }
+  //   if (!_isinitialized.value) {
+  //     _isinitialized.value = true;
+  //   }
+  // }
 
-  void checkInitialAuthState() async {
-    final currentUser = FirebaseAuth.instance.currentUser;
-    if (currentUser != null) {
-      _user.value = currentUser;
-      Get.offAllNamed(Approutes.main);
-    } else {
-      Get.offAllNamed(Approutes.login);
-    }
-    _isinitialized.value = true;
-  }
+  // void checkInitialAuthState() async {
+  //   final currentUser = FirebaseAuth.instance.currentUser;
+  //   if (currentUser != null) {
+  //     _user.value = currentUser;
+  //     Get.offAllNamed(Approutes.main);
+  //   } else {
+  //     Get.offAllNamed(Approutes.login);
+  //   }
+  //   _isinitialized.value = true;
+  // }
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {
@@ -61,7 +61,8 @@ class AuthController extends GetxController {
       );
       if (userModel != null) {
         _userModel.value = userModel;
-        Get.offAllNamed(Approutes.main);
+        Get.offAllNamed(Approutes.profile);
+        //main screen olmadığı için profile ekledim
       }
     } catch (e) {
       _error.value = e.toString();
