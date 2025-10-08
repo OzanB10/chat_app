@@ -57,5 +57,27 @@ class MessageModel {
     );
   }
 
-  
+  MessageModel copyWith({
+    String? id,
+    String? senderId,
+    String? receiverId,
+    String? content,
+    MessageType? type,
+    DateTime? timestamp,
+    bool? isRead,
+    bool? isEdited,
+    DateTime? editedAt,
+  }) {
+    return MessageModel(
+      id: id ?? this.id,
+      senderId: senderId ?? this.senderId,
+      receiverId: receiverId ?? this.receiverId,
+      content: content ?? this.content,
+      type: type ?? this.type,
+      timestamp: timestamp ?? this.timestamp,
+      isRead: isRead ?? this.isRead,
+      isEdited: isEdited ?? this.isEdited,
+      editedAt: editedAt ?? this.editedAt,
+    );
+  }
 }
