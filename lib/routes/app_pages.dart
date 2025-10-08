@@ -3,6 +3,7 @@ import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/views/auth/forgot_password_view.dart';
 import 'package:chat_app/views/auth/login_view.dart';
 import 'package:chat_app/views/auth/register_view.dart';
+import 'package:chat_app/views/profile/change_password_view.dart';
 import 'package:chat_app/views/profile/profile_view.dart';
 import 'package:chat_app/views/splash_view.dart';
 import 'package:get/get.dart';
@@ -31,11 +32,11 @@ class AppPages {
     // }),
     // ),
    
-    // GetPage(
-    // name: Approutes.changePassword, 
-    // page: () => const ChangePasswordView(),
-    
-    // ),
+    GetPage(
+    name: Approutes.changePassword, 
+    page: () => const ChangePasswordView(),
+    ),
+
     GetPage(
     name: Approutes.profile, 
     page: () => const ProfileView(),
@@ -43,6 +44,7 @@ class AppPages {
       Get.put(ProfileController());
     }),
     ),
+    
     // GetPage(
     // name: Approutes.chat, 
     // page: () => const ChatView(),

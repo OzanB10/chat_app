@@ -11,7 +11,7 @@ class ChangePasswordController extends GetxController {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final RxBool _isLoading = false.obs;
   final RxString _error = ''.obs;
@@ -46,7 +46,7 @@ class ChangePasswordController extends GetxController {
   }
 
   Future<void> changePassword() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (!formKey.currentState!.validate()) return;
 
     try {
       _isLoading.value = true;
@@ -56,14 +56,15 @@ class ChangePasswordController extends GetxController {
       if (user == null) {
         throw Exception("No User Logged in");
       }
-      final credential = EmailAuthProvider.credential(
-        email: user.email!,
-        password: currentPasswordController.text,
-      );
+      // final credential = EmailAuthProvider.credential(
+      //   email: user.email!,
+      //   password: currentPasswordController.text,
+      // );
 
-      await user.reauthenticateWithCredential(credential);
+      // await user.reauthenticateWithCredential(credential);
 
       await user.updatePassword(newPasswordController.text);
+     
 
       Get.snackbar(
         'Success',
@@ -72,6 +73,7 @@ class ChangePasswordController extends GetxController {
         colorText: Colors.green,
         duration: const Duration(seconds: 3),
       );
+       await _authController.signOut();
 
       currentPasswordController.clear();
       newPasswordController.clear();

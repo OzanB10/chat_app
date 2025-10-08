@@ -1,4 +1,5 @@
 import 'package:chat_app/controllers/profile_controller.dart';
+import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,6 +28,7 @@ class ProfileView extends GetView<ProfileController> {
               child: Text(
                 controller.isEditing ? 'Cancel' : 'Edit',
                 style: TextStyle(
+                  fontSize: 14,
                   color:
                       controller.isEditing
                           ? AppTheme.errorColor
@@ -233,7 +235,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                       title: Text("Change Password"),
                       trailing: Icon(Icons.arrow_forward_ios_outlined),
-                      onTap: () => Get.toNamed('/change-password'),
+                      onTap: () => Get.toNamed(Approutes.changePassword),
                     ),
                     Divider(height: 1, color: Colors.grey),
                     ListTile(
